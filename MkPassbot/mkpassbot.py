@@ -1,20 +1,24 @@
-from telegram import *
-from telegram.ext import *
+"""telegram bot to create strong password """
 import string
 import random
+from telegram import *
+from telegram.ext import *
 
+# this is bot token
 tokena = ""
 upder = Updater(tokena, use_context=True)
 desp = upder.dispatcher
 
 
 def main():
+    """this is the brain of the bot"""
     desp.add_handler(CommandHandler("start", start))
     desp.add_handler(CommandHandler("mknewpass", mknewpass))
     upder.start_polling()
 
 
 def start(update, context):
+    """this section is for welcome"""
     update.message.reply_text("Welcome to Password Maker bot")
 
 
@@ -24,6 +28,8 @@ def mknewpass(update, context):
 
 
 def mkpass(update, context):
+    """in this section, passwords
+    are created and sent to the user"""
     try:
         numch = int(update.message.text)
         character = string.ascii_letters + string.digits + string.punctuation
@@ -40,5 +46,6 @@ def mkpass(update, context):
         \ntry again with the /mknewpass command")
 
 
-print("server started")
+print("Server started")
+# the server turns on
 main()

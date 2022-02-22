@@ -15,6 +15,7 @@ def main():
     desp.add_handler(CommandHandler("start", start))
     desp.add_handler(CommandHandler("mknewpass", mknewpass))
     upder.start_polling()
+    upder.idle()
 
 
 def start(update, context):
@@ -46,6 +47,7 @@ def mkpass(update, context):
         \ntry again with the /mknewpass command")
 
 
-print("Server started")
 # the server turns on
-main()
+if __name__ == '__main__':
+    print("Server started")
+    main()
